@@ -1,0 +1,27 @@
+.keyword{
+    color: red;
+}
+
+.operator{
+    color: blue
+}
+
+.literal{
+    color: brown;
+}
+
+.comment{
+    color: yellow;
+}
+
+.identifier{
+    color: green;
+}
+
+.delimiter{
+    color: gray;
+}
+
+.space{
+    color: aliceblue;
+}
