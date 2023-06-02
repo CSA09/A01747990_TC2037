@@ -32,9 +32,9 @@ defmodule RS do
 
   end
 
-  def highlight_lex(data, lexemes, class) do
+  def highlight_lex(data, lexeme) do
     Enum.reduce(lexemes, data, fn {lexeme, _}, acc ->
-      String.replace(acc, lexeme, "<span class=\"#{class}\">#{lexeme}</span>")
+      String.replace(acc, lexeme, "<span class=\"#{lexeme}\"></span>")
     end)
   end
 
