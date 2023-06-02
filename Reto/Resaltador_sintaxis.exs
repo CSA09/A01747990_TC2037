@@ -12,7 +12,7 @@ defmodule RS do
     File.write(output_path, html_doc(data, output_path)) # Writes html file calling html_doc function
   end
 
-  def highlight_line(data) do
+  def highlight_line(data) do # Stores variables with all the regex and then calls the function highlight lexeme for all regex
     keywords = Regex.scan(~r/\b(and|as|assert|break|class|continue|def|del|elif|else|except|finally|for|from|global|if|import|in|is|lambda|nonlocal|not|or|pass|raise|return|try|while|with|yield)\b/, data)
     operators = Regex.scan(~r/\+|-|\*|\/|%|==|!=|>|<|>=|<=|=|\+=|-=|\*=|\/=|%=|\*\*=/, data)
     literals = Regex.scan(~r/(\d+|\d+\.\d*|\.\d+|".*?"|'.*?')/, data)
@@ -32,9 +32,9 @@ defmodule RS do
 
   end
 
-  def highlight_lex(data, lexeme) do
+  def highlight_lex(data, lexeme, class) do
     Enum.reduce(lexemes, data, fn {lexeme, _}, acc ->
-      String.replace(acc, lexeme, "<span class=\"#{lexeme}\"></span>")
+      String.replace(acc, lexeme, "<span class=\"#{class}\"></span>")
     end)
   end
 
