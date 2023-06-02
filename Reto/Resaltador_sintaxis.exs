@@ -3,12 +3,12 @@
 defmodule RS do
 
   def highlight_syntax(file_path, output_path) do
-    data = file_path
-    |> File.stream!() # receive data
-    |> Enum.map(&highlight_line/1)
-    |> Enum.join("\n")
+    data = file_path # Variable that stores the python file
+    |> File.stream!() # Reads the file stored in data at returns is as a stream
+    |> Enum.map(&highlight_line/1) # Executes highlight_line funtion to the file line by line
+    |> Enum.join("\n") # Formats data so there are line breaks between every line
 
-    File.write(output_path, html_doc(data, output_path))
+    File.write(output_path, html_doc(data, output_path)) # Writes html file calling html_doc function
   end
 
   def highlight_line(data) do
@@ -31,7 +31,7 @@ defmodule RS do
 
   end
 
-  def highlight_lex(data) do
+  def highlight_lex(data, lexemes, class) do
     Enum.reduce(lexemes, data, fn {lexeme, _}, acc ->
       String.replace(acc, lexeme, "<span class=\"#{class}\">#{lexeme}</span>")
     end)
