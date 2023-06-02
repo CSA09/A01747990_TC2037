@@ -1,4 +1,5 @@
 # Resaltador de sintaxis
+# Carlos Soto Alarcón - A01747990
 
 defmodule RS do
 
